@@ -29,5 +29,26 @@ class PostSeeder extends Seeder
             'image' => 'image_3.png',
             'user_id' => 1,
         ]);
+
+        Post::create([
+            'title' => 'Картинка 2',
+            'description' => 'Картинка 2',
+            'image' => 'image_3.png',
+            'user_id' => 1,
+        ]);
+
+        Post::create([
+            'title' => 'Картинка 2',
+            'description' => 'Картинка 2',
+            'image' => 'image_3.png',
+            'user_id' => 1,
+        ]);
+
+        Post::create([
+            'title' => 'Картинка 2',
+            'description' => 'Картинка 2',
+            'image' => 'image_3.png',
+            'user_id' => 1,
+        ]);
     }
 }

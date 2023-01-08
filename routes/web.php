@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -22,5 +25,16 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::controller(PostController::class)->group(function () {
+    Route::post('/post/like/{postId}', 'likePost')->name('likePost');
+    Route::post('/post/dislike/{postId}', 'dislikePost')->name('dislikePost');
+    Route::post('/post/create', 'dislikePost')->name('createPost');
+});
 
-//Route::post('/login', [\App\Http\Controllers\Auth\LoginController::class, ''])
+Route::controller(UserController::class)->group(function () {
+
+});
+
+Route::controller(AdminController::class)->group(function () {
+
+});

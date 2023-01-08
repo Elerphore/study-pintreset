@@ -21,6 +21,8 @@
             </form>
             @else
                 <div class="d-flex align-items-center align-content-center gap-1">
+                    <a class="btn btn-primary">Ваши посты</a>
+
                     <a class="btn btn-primary">Личный кабинет</a>
 
                     <a class="btn btn-primary">Админ панель</a>
@@ -41,7 +43,7 @@
             @endguest
         </div>
     </nav>
-    <div class="container">
+    <div class="container-lg d-flex justify-content-center">
         @yield('body')
     </div>
 </body>
