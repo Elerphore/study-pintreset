@@ -33,7 +33,7 @@ class LoginController extends Controller
     {
         if(Auth::attempt($request->only(['login', 'password'])))
         {
-            return redirect()->route('home');
+            return redirect()->route('posts');
         }
     }
 }

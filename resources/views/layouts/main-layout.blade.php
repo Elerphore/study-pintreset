@@ -13,24 +13,22 @@
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <h1 class="ms-5">PINTEREST</h1>
+
         <div class="container-fluid d-flex justify-content-end">
             @guest
-            <form class="d-flex gap-1">
-                <a href="{{ route('login') }}"  class="btn btn-outline-success" type="submit">Войти</a>
-                <a href="{{ route('register') }}" class="btn btn-outline-success" type="submit">Регистрация</a>
-            </form>
+                <form class="d-flex gap-1">
+                    <a href="{{ route('login') }}"  class="btn btn-outline-success" type="submit">Войти</a>
+                    <a href="{{ route('register') }}" class="btn btn-outline-success" type="submit">Регистрация</a>
+                </form>
             @else
                 <div class="d-flex align-items-center align-content-center gap-1">
-                    <a class="btn btn-primary">Ваши посты</a>
-
-                    <a class="btn btn-primary">Личный кабинет</a>
-
-                    <a class="btn btn-primary">Админ панель</a>
-
-                    <a class="btn btn-primary">Добавить пост</a>
-
-                    <a class="btn btn-primary">Понравившиеся</a>
-
+                    <a href="{{ route('posts') }}" class="btn btn-primary">Главная</a>
+                    <a href="{{ route('ownPosts') }}" class="btn btn-primary">Ваши посты</a>
+                    <a href="{{ route('cabinet') }}" class="btn btn-primary">Личный кабинет</a>
+                    <a href="{{ route('adminpanel') }}" class="btn btn-primary">Админ панель</a>
+                    <a href="{{ route('addpost_view') }}" class="btn btn-primary">Добавить пост</a>
+                    <a href="{{ route('likedPosts') }}" class="btn btn-primary">Понравившиеся</a>
                     <a onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                        class="btn btn-danger"
                        href="{{ route('logout') }}">

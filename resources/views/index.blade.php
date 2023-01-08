@@ -11,10 +11,12 @@
                     <p class="card-text">{{ $post->description }}</p>
 
                     <div class="d-grid gap-1">
-                        <form action="{{ route('likePost', ['postId' => $post->id]) }}" method="post">
+                        <form action="{{ route('ratePost', ['postId' => $post->id, 'type' => 'like']) }}" method="post">
+                            @csrf
                             <button type="submit" href="#" class="w-100 btn btn-primary">Like</button>
                         </form>
-                        <form action="{{ route('dislikePost', ['postId' => $post->id]) }}" method="post">
+                        <form action="{{ route('ratePost', ['postId' => $post->id, 'type' => 'dislike']) }}" method="post">
+                            @csrf
                             <button type="submit" href="#" class="w-100 btn btn-danger">Dislike</button>
                         </form>
                     </div>

@@ -3,38 +3,28 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
-use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-Route::get('/', function () {
-    $posts = Post::all();
-    return view('index')->with(compact('posts'));
-})->name('home');
 
 Auth::routes();
 
 Route::controller(PostController::class)->group(function () {
-    Route::post('/post/like/{postId}', 'likePost')->name('likePost');
-    Route::post('/post/dislike/{postId}', 'dislikePost')->name('dislikePost');
-    Route::post('/post/create', 'dislikePost')->name('createPost');
+    Route::get('/', function () { return redirect()->route('posts'); });
+
+    Route::post('/post/like/{postId}/{type}', 'ratePost')->name('ratePost');
+
+    Route::view('/post/create', 'addpost.index')->name('addpost_view');
+
+    Route::post('/post/create', 'createPost')->name('createPost');
+    Route::get('/post/posts', 'posts')->name('posts');
+    Route::get('/post/likedPosts', 'likedPosts')->name('likedPosts');
+    Route::get('/post/ownPosts', 'ownPosts')->name('ownPosts');
 });
 
 Route::controller(UserController::class)->group(function () {
-
+    Route::get('/user/cabinet', 'cabinet')->name('cabinet');
 });
 
 Route::controller(AdminController::class)->group(function () {
-
+    Route::get('/adminpanel', 'adminPanel')->name('adminpanel');
 });
