@@ -19,6 +19,8 @@ Route::controller(PostController::class)->group(function () {
     Route::get('/post/posts', 'posts')->name('posts');
     Route::get('/post/likedPosts', 'likedPosts')->name('likedPosts');
     Route::get('/post/ownPosts', 'ownPosts')->name('ownPosts');
+
+    Route::post('/removeRating/{postId}', 'removeRating')->name('removeRating');
 });
 
 Route::controller(UserController::class)->group(function () {
@@ -27,4 +29,6 @@ Route::controller(UserController::class)->group(function () {
 
 Route::controller(AdminController::class)->group(function () {
     Route::get('/adminpanel', 'adminPanel')->name('adminpanel');
+    Route::post('/editpost/{postId}', 'postEdit')->name('postEdit');
+    Route::delete('/removePost/{postId}', 'postRemove')->name('postRemove');
 });

@@ -2,9 +2,9 @@
 
 @section('body')
 
-    <div class="row d-flex justify-content-center gap-4 mt-5">
+    <div class="posts-block gap-4 mt-5">
         @foreach($posts as $post)
-            <div class="card" style="width: 30%;">
+            <div class="card">
                 <img src="{{ asset('image/'.$post->image) }}" style="width: 100%; height: 200px;" class="card-img-top" alt="">
                 <div class="card-body">
                     <h5 class="card-title">{{ $post->title }}</h5>

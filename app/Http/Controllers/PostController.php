@@ -10,7 +10,12 @@ use Illuminate\Support\Facades\Auth;
 class PostController extends Controller
 {
     public function ratePost($postId, $type) {
-        $likedPost = new UserPost;
+
+        $likedPost = UserPost::where('user_id', Auth::user()->id)->where('post_id', $postId)->first();
+
+        if($likedPost == null) {
+            $likedPost = new UserPost;
+        }
 
         $likedPost->post_id = $postId;
         $likedPost->user_id = Auth()->user()->id;
@@ -31,7 +36,7 @@ class PostController extends Controller
             $image = $request->file('image');
             $fileName = time() . '.' . $image->getClientOriginalExtension();
 
-            $destinationPath = public_path('/images');
+            $destinationPath = public_path('/image');
             $image->move($destinationPath, $fileName);
 
             $post->image = $fileName;
@@ -40,6 +45,8 @@ class PostController extends Controller
         $post->user_id = Auth()->user()->id;
 
         $post->save();
+
+        return redirect()->route('posts');
     }
 
     public function posts() {
@@ -56,5 +63,11 @@ class PostController extends Controller
     public function ownPosts() {
         $posts = Post::where('user_id', Auth::user()->id)->get();
         return view('cabinet.own-user-post')->with(compact('posts'));
+    }
+
+    public function removeRating($postId) {
+        UserPost::where('user_id', Auth::user()->id)->where('post_id', $postId)->delete();
+
+        return redirect()->route('likedPosts');
     }
 }

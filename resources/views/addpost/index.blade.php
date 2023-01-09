@@ -1,7 +1,9 @@
 @extends('layouts.main-layout')
 
 @section('body')
-    <form class="w-75">
+    <form class="w-75" action="{{ route('createPost') }}" method="post" enctype="multipart/form-data">
+        @csrf
+
         <h1 class="text-center">Добавить пост</h1>
 
         <div class="form-group">
