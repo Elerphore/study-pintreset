@@ -1,11 +1,10 @@
 @extends('layouts.main-layout')
 
 @section('body')
-<div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center w-100">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header">Регистрация</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -40,5 +39,4 @@
             </div>
         </div>
     </div>
-</div>
 @endsection

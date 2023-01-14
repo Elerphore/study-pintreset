@@ -10,6 +10,7 @@
                     <h5 class="card-title">{{ $post->title }}</h5>
                     <p class="card-text">{{ $post->description }}</p>
 
+                    @auth
                     <div class="d-grid gap-1">
                         <form action="{{ route('ratePost', ['postId' => $post->id, 'type' => 'like']) }}" method="post">
                             @csrf
@@ -20,6 +21,7 @@
                             <button type="submit" href="#" class="w-100 btn btn-danger">Dislike</button>
                         </form>
                     </div>
+                    @endauth
 
                 </div>
             </div>

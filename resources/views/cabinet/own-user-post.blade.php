@@ -16,6 +16,7 @@
                             <form
                                 action="{{ route('postRemove', ["postId" => $post->id]) }}"
                                 method="post">
+                                @method("delete")
                                 @csrf
                                 <button type="submit" href="#" class="w-100 btn btn-danger">Удалить</button>
                             </form>
